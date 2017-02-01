@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+	<title>Fun Bridge</title>
+	<link rel="stylesheet"  type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="waiting_room" id="waiting_room">
+		<div class="player_name" id="player_name_container">
+			<form v-on:submit.prevent="newPlayerJoined">
+				<input v-model="newPlayerName" autocomplete="off"/>
+			</form>
+			<p v-if="playerNameError" style="color: red;">Sorry! Already taken.</p>
+		</div>
+	
+		<ul class="player_list">
+			<li v-for="player in players">{{ player.name }}</li>
+		</ul>
+	</div>
+	
+	<!-- <div class="container" id="game_room">
+		<div class="chat" id="chatwindow"></div>
+		<div class="form">
+			<textarea name="message" id="messagebox" placeholder="Message:"></textarea>
+		</div>
+	</div> -->
+	
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="vendor/vue.js/vue.js"></script>
+	<script src="vendor/vue.js/vue-resource.min.js"></script>
+
+	<script src="js/helper.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/vue/waiting_room.js"></script>
+	<script src="js/socket_events.js"></script>
+</body>
+</html>
